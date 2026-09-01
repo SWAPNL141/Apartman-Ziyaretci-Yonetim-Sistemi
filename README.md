@@ -109,7 +109,7 @@ Sistem; ziyaretçi giriş/çıkışlarının kaydedilmesi, apartman ve daire bil
 
 ### Ziyaretçi Çıkışı
 
-![Ziyaretçi Çıkışı](<Sayfa Görüntüleri/checkout_visiton.png>)
+![Ziyaretçi Çıkışı](<Sayfa Görüntüleri/checkout_visitor.png>)
 
 ### Ziyaretçi İşlemleri
 
