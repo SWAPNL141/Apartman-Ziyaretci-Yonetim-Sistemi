@@ -171,7 +171,7 @@ Sistem; ziyaretçi giriş/çıkışlarının kaydedilmesi, apartman ve daire bil
 
 ## ⚙️ Layout Ayarları
 
-![Layout Ayarları](<Sayfa Görüntüleri/layout-ayarlari.png>)
+![Layout Ayarları](<Sayfa Görüntüleri/layout-ayarları.png>)
 
 ---
 
