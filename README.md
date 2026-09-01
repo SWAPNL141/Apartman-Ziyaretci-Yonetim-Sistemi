@@ -1,121 +1,205 @@
-🏢 Apartman Ziyaretçi Yönetim Sistemi (PHP)
-
-Modern, hızlı ve güvenli PHP & MySQL tabanlı apartman ve site ziyaretçi kayıt ve yönetim sistemidir. Bu proje; binalara giriş-çıkış yapan ziyaretçilerin takibini kolaylaştırmak, güvenlik süreçlerini dijitalleştirmek ve site yönetiminin daire/ziyaretçi kayıtlarını pratik bir şekilde raporlamasını sağlamak amacıyla geliştirilmiştir.
-
-📋 Proje Özellikleri
-
-Ziyaretçi Yönetimi:
-
-Anlık ziyaretçi kayıt oluşturma (Ad-Soyad, T.C. Kimlik / İletişim bilgileri, Araç Plakası, Giriş Zamanı).
-
-Ziyaretçi çıkış kaydı alma ve otomatik kalış süresi hesaplama.
-
-Geçmiş ziyaretçi kayıtlarını tarih, isim ve plakaya göre filtreleme ve arama.
-
-Daire ve Sakin Yönetimi:
-
-Daire bazlı sakin ve ev sahibi bilgileri tanımlama.
-
-Ziyaret edilen daireye ve kişiye göre hızlı eşleştirme.
-
-Kullanıcı & Yetkilendirme:
-
-Güvenlik Görevlisi: Ziyaretçi ekleme, çıkış yapma ve anlık durum takibi.
-
-Yönetici (Admin): Tüm daire, sakin, güvenlik personeli ve sistem ayarlarını yönetme.
-
-Güvenli giriş ve oturum (session) yönetimi.
-
-Raporlama ve Arayüz:
-
-Günlük, haftalık ve aylık ziyaretçi raporları (PDF / Excel çıktı imkanı).
-
-Mobil uyumlu (Responsive), Bootstrap / Tailwind destekli modern arayüz tasarımı.
-
-📸 Sayfa Görüntüleri
-
-Projenin temel ekranlarına ait görüntüler aşağıda yer almaktadır. (Görsellerin düzgün görünmesi için proje dizininde Sayfa Görüntüleri/ klasörünün bulunduğundan ve görsel isimlerinin doğru olduğundan emin olun.)
-
-1. Ana Sayfa / Kontrol Paneli (Dashboard)
-
-2. Ziyaretçi Kayıt Ekranı
-
-3. Ziyaretçi Listesi ve Arama
-
-4. Daire ve Sakin Yönetimi
-
-🛠️ Teknolojiler
-
-Backend: PHP (v7.4 veya üstü) / PDO
-
-Veritabanı: MySQL / MariaDB
-
-Frontend: HTML5, CSS3, JavaScript (Bootstrap 5 / Tailwind CSS)
-
-Sunucu: Apache veya Nginx (XAMPP / WAMP / Wsl / MAMP destekli)
-
-🚀 Kurulum ve Çalıştırma
-
-Projeyi yerel ortamınızda (Localhost) çalıştırmak için aşağıdaki adımları takip edebilirsiniz:
-
-1. Gereksinimler
-
-XAMPP, WAMP veya PHP/MySQL destekli herhangi bir yerel sunucu.
-
-PHP >= 7.4
-
-MySQL Database
-
-2. Projeyi Klonlayın veya İndirin
-
-Projeyi htdocs (XAMPP) veya www (WAMP) klasörüne indirin:
-
-git clone https://github.com/kullanici-adi/apartman-ziyaretci-php.git
-Dosyaları yerel sunucunuzun kök dizinine taşıyın (örneğin XAMPP için htdocs/apartman-ziyaretci).
-
-3. Veritabanı Yapılandırması
-phpMyAdmin veya tercih ettiğiniz SQL istemcisini açın.
-
-apartman_ziyaretci adında yeni bir veritabanı oluşturun.
-
-Proje dizininde yer alan database.sql (veya schema.sql) dosyasını bu veritabanına içe aktarın (Import).
-
-4. Bağlantı Ayarları
-Projenin veritabanı bağlantı dosyasını (config/db.php veya baglan.php) açın ve veritabanı bilgilerinizi güncelleyin:
-
+🏢 Apartman Ziyaretçi Yönetim Sistemi
+Apartman, site veya bina girişlerinde ziyaretçi kayıtlarını yönetmek
+için hazırlanmış web tabanlı bir Apartman Ziyaretçi Yönetim Sistemi.
+Proje; yöneticinin apartman/daire bilgilerini yönetmesini, ziyaretçi
+giriş ve çıkışlarını kaydetmesini, kayıtları görüntülemesini ve
+raporlamasını sağlayan klasik bir PHP + MySQL yapısına sahiptir. Yönetim
+arayüzünde AdminLTE tabanlı responsive bir panel kullanılmaktadır.
+> **Not:** Proje mevcut dosya yapısı ve bağımlılıklarıyla birlikte
+> eski/legacy bir PHP sürümünü hedeflemektedir. Canlı kullanımdan önce
+> güvenlik ve uyumluluk açısından güncellenmesi önerilir.
+✨ Özellikler
+🔐 Yönetici giriş sistemi
+📊 Gösterge paneli
+Toplam ziyaretçi sayısı
+Günlük ziyaretçi sayısı
+Dolu apartman sayısı
+Boş apartman sayısı
+🏢 Apartman/daire yönetimi
+➕ Yeni ziyaretçi kaydı oluşturma
+🚪 Ziyaretçi çıkışı kaydetme
+👥 Ziyaretçi kayıtlarını listeleme ve detaylarını görüntüleme
+🔎 İsim veya iletişim bilgisine göre ziyaretçi arama
+📄 Ziyaretçi raporları
+👤 Yönetici profil bilgileri
+🔑 Şifre değiştirme ve şifre kurtarma sayfaları
+📱 Responsive yönetim paneli
+🛠️ Kullanılan Teknolojiler
 PHP
-<?php
-$host = "localhost";
-$dbname = "apartman_ziyaretci";
-$username = "root";
-$password = "";
-
-try {
-    $db = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
-} catch (PDOException $e) {
-    echo "Veritabanı bağlantı hatası: " . $e->getMessage();
-}
-?>
-5. Uygulamayı Başlatın
-Tarayıcınızı açın ve adres çubuğuna şu adresi yazın:
-
-Plaintext
-http://localhost/apartman-ziyaretci
-
-
+MySQL / MariaDB
+HTML5 / CSS3
+JavaScript / jQuery
+Bootstrap 3
+AdminLTE
+DataTables
+Font Awesome
+Ionicons
+Morris.js
+📁 Proje Yapısı
+``` text
+.
+├── Apartman Ziyaretçi/
+│   ├── index.php
+│   ├── dashboard.php
+│   ├── visitor-entry.php
+│   ├── checkout_visitor.php
+│   ├── visitor-mgmt.php
+│   ├── manage-apartment.php
+│   ├── report.php
+│   ├── profile.php
+│   ├── includes/
+│   ├── counters/
+│   ├── DATABASE FILE/
+│   │   └── apartment-visitor-nb.sql
+│   ├── dist/
+│   ├── plugins/
+│   └── bower_components/
+│
+└── Sayfa Görüntüleri/
+    ├── index.png
+    ├── dashboard.png
+    ├── visitor-entry.png
+    ├── checkout_visiton.png
+    ├── visitor-mgmt.png
+    ├── action-visitor.png
+    ├── manage-apartment.png
+    ├── add-apartment.png
+    ├── edit-apartment.png
+    ├── report.png
+    ├── view-report.png
+    ├── search-result.png
+    ├── profile.png
+    ├── change-password.png
+    ├── forgotpw.png
+    ├── password-recovery.png
+    └── layout-ayarlari.png
+```
+🚀 Kurulum
+1. Projeyi web sunucusuna yerleştirin
+Projeyi Apache/XAMPP gibi bir PHP web sunucusunun web dizinine
+kopyalayın.
+Örnek:
+``` text
+htdocs/
+└── Apartman Ziyaretçi/
+```
+2. Veritabanını oluşturun
+MySQL veya MariaDB üzerinde:
+``` text
+DATABASE FILE/apartment-visitor-nb.sql
+```
+dosyasını içe aktarın.
+Veritabanının adı:
+``` text
+apartment-visitor-nb
+```
+3. Veritabanı bağlantısını kontrol edin
+Bağlantı ayarları:
+``` text
+includes/dbconn.php
+```
+dosyasında bulunmaktadır.
+Varsayılan yapı:
+``` text
+Host: localhost
+User: root
+Password: boş
+Database: apartment-visitor-nb
+```
+Kendi sunucunuzun MySQL bilgilerine göre bu değerleri değiştirin.
+4. Sistemi açın
+Tarayıcıdan proje klasörüne giderek giriş sayfasını açabilirsiniz:
+``` text
+http://localhost/Apartman%20Ziyaretçi/
+```
+🖼️ Sayfa Görüntüleri
+Aşağıdaki ekran görüntüleri `Sayfa Görüntüleri` klasöründen yüklenir.
+Böylece GitHub reposuna giren kişiler kaynak dosyalarını açmadan arayüzü
+doğrudan inceleyebilir.
+🔐 Giriş
 ---
-
-## 🔑 Varsayılan Giriş Bilgileri
-
-Sisteme ilk defa giriş yapmak için aşağıdaki varsayılan hesap bilgilerini kullanabilirsiniz:
-
-- **E-posta / Kullanıcı Adı:** `admin@apartman.com`
-- **Şifre:** `admin123`
-
-*(Sisteme giriş yaptıktan sonra güvenlik amacıyla şifrenizi değiştirmeniz önerilir.)*
-
+Giriş Sayfası
+`<img src="./Sayfa%20Görüntüleri/index.png" alt="Giriş Sayfası" width="700">`{=html}
 ---
-
-## 📄 Lisans
-
-Bu proje **MIT Lisansı** ile lisanslanmıştır. Detaylar için `LICENSE` dosyasına göz atabilirsiniz.
+📊 Yönetim Paneli
+---
+Gösterge Paneli                                                                              Ziyaretçi Yönetimi
+---
+`<img src="./Sayfa%20Görüntüleri/dashboard.png" alt="Gösterge Paneli" width="500">`{=html}   `<img src="./Sayfa%20Görüntüleri/visitor-mgmt.png" alt="Ziyaretçi Yönetimi" width="500">`{=html}
+---
+👥 Ziyaretçi İşlemleri
+---
+Ziyaretçi Girişi                                                                                  Ziyaretçi Çıkışı
+---
+`<img src="./Sayfa%20Görüntüleri/visitor-entry.png" alt="Ziyaretçi Girişi" width="500">`{=html}   `<img src="./Sayfa%20Görüntüleri/checkout_visiton.png" alt="Ziyaretçi Çıkışı" width="500">`{=html}
+---
+---
+Ziyaretçi Detayı                                                                                   Ziyaretçi Detay İşlemleri
+---
+`<img src="./Sayfa%20Görüntüleri/action-visitor.png" alt="Ziyaretçi Detayı" width="500">`{=html}   `<img src="./Sayfa%20Görüntüleri/view-report.png" alt="Rapor Detayı" width="500">`{=html}
+---
+🏢 Apartman Yönetimi
+---
+Apartman Yönetimi                                                                                     Apartman Ekleme
+---
+`<img src="./Sayfa%20Görüntüleri/manage-apartment.png" alt="Apartman Yönetimi" width="500">`{=html}   `<img src="./Sayfa%20Görüntüleri/add-apartment.png" alt="Apartman Ekleme" width="500">`{=html}
+---
+---
+Apartman Düzenleme
+`<img src="./Sayfa%20Görüntüleri/edit-apartment.png" alt="Apartman Düzenleme" width="700">`{=html}
+---
+📄 Raporlar ve Arama
+---
+Raporlar                                                                           Arama Sonuçları
+---
+`<img src="./Sayfa%20Görüntüleri/report.png" alt="Raporlar" width="500">`{=html}   `<img src="./Sayfa%20Görüntüleri/search-result.png" alt="Arama Sonuçları" width="500">`{=html}
+---
+👤 Profil ve Hesap İşlemleri
+---
+Profil                                                                            Şifre Değiştirme
+---
+`<img src="./Sayfa%20Görüntüleri/profile.png" alt="Profil" width="500">`{=html}   `<img src="./Sayfa%20Görüntüleri/change-password.png" alt="Şifre Değiştirme" width="500">`{=html}
+---
+---
+Şifremi Unuttum                                                                             Şifre Kurtarma
+---
+`<img src="./Sayfa%20Görüntüleri/forgotpw.png" alt="Şifremi Unuttum" width="500">`{=html}   `<img src="./Sayfa%20Görüntüleri/password-recovery.png" alt="Şifre Kurtarma" width="500">`{=html}
+---
+⚙️ Arayüz Ayarları
+`<img src="./Sayfa%20Görüntüleri/layout-ayarlari.png" alt="Layout Ayarları" width="700">`{=html}
+🗄️ Veritabanı
+Proje içerisinde hazır bir SQL dump bulunmaktadır:
+``` text
+DATABASE FILE/apartment-visitor-nb.sql
+```
+Temel tablolar:
+`tbladmin` --- yönetici hesapları
+`apartment` --- apartman/daire bilgileri
+`tblvisitor` --- ziyaretçi kayıtları
+SQL dosyası örnek/demo kayıtları da içermektedir.
+⚠️ Güvenlik Notu
+Bu proje eğitim, geliştirme veya yerel kullanım amacıyla
+değerlendirilmelidir. İnternete açık bir sunucuda kullanmadan önce
+özellikle:
+Varsayılan yönetici hesabını ve parolasını değiştirin.
+Veritabanı kimlik bilgilerini güvenli şekilde yapılandırın.
+Eski parola hashleme yöntemini daha güvenli bir yönteme taşıyın.
+SQL sorgularını prepared statement yapısına geçirin.
+Kullanıcı girdilerini doğrulama ve filtreleme mekanizmalarını
+güçlendirin.
+Hata mesajlarının üretim ortamında dışarıya gösterilmesini
+engelleyin.
+Projede bulunan örnek kişisel/demo kayıtlarını canlı ortamdan
+kaldırın.
+📌 Proje Bilgileri
+Veritabanı: `apartment-visitor-nb`
+Önerilen PHP sürümü: 5.6 ve üzeri
+Arayüz: AdminLTE
+Veritabanı: MySQL / MariaDB
+🙌 Kaynak
+Proje dosyalarında yer alan bilgilere göre temel proje Naseeb
+Bajracharya tarafından geliştirilmiştir. Proje içerisinde kullanılan
+üçüncü taraf kütüphanelerin kendi lisanslarına da uyulmalıdır.
+---
+⭐ Projeyi faydalı bulduysanız repository'ye bir yıldız
+bırakabilirsiniz.
